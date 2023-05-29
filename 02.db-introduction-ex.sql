@@ -2,7 +2,7 @@
 CREATE DATABASE `minions`;
 USE `minions`;
 
--- ex.1
+-- ex.1 Create Tables
 CREATE TABLE `minions` (
 `id` INT PRIMARY KEY AUTO_INCREMENT,
 `name` VARCHAR(30),
@@ -16,14 +16,14 @@ CREATE TABLE `towns` (
 ALTER TABLE `towns`
 CHANGE COLUMN `town_id` `id` INT;
 
--- ex.2
+-- ex.2 Alter Minions Table
 ALTER TABLE `minions`
 ADD COLUMN `town_id` INT,
 ADD CONSTRAINT `fk_minions_towns` 
 FOREIGN KEY `minions`(`town_id`)
 REFERENCES `towns`(`id`);
 
--- ex.3
+-- ex.3 Insert Records in Both Tables
 INSERT INTO `towns` (`id`,`name`)
 VALUES
 	('1', 'Sofia'),
@@ -35,14 +35,14 @@ VALUES
 	('2','Bob', '15', '2'),
 	('3','Steward', '22', '3');
     
--- ex.4
+-- ex.4 Truncate Table Minions
 TRUNCATE TABLE `minions`;
 
--- ex.5
+-- ex.5 Drop All Tables
 DROP TABLE `minions`;
 DROP TABLE `towns`;
 
--- ex.6
+-- ex.6 Create Table People
 CREATE TABLE `people`(
 `id` INT AUTO_INCREMENT PRIMARY KEY,
 `name` VARCHAR(200) NOT NULL,
@@ -61,7 +61,7 @@ VALUES
     ('4','name4','4','120.5','48.00','m','2020-11-23','asdasdasdddd'),
     ('5','name5','5','120.5','48.00','f','2020-11-24','asdasdasdddd');
 
--- ex.7
+-- ex.7 Create Table Users
 CREATE TABLE `users`(
 `id` INT AUTO_INCREMENT PRIMARY KEY,
 `username` VARCHAR(30) UNIQUE NOT NULL,
@@ -78,17 +78,17 @@ VALUES
     ('4','name4','asdasdasdddd'),
     ('5','name5','asdasdasdddd');
 
--- ex.8
+-- ex.8. Change Primary Key
 ALTER TABLE `users`
 DROP PRIMARY KEY,
 ADD CONSTRAINT `pk_users`
 PRIMARY KEY `users`(`id`, `username`);
 
--- ex.9
+-- ex.9 Set Default Value of a Field
 ALTER TABLE `users`
 CHANGE COLUMN `last_login_time` `last_login_time` DATETIME DEFAULT NOW();
 
--- ex.10
+-- ex.10 Set Unique Field
 ALTER TABLE `users`
 DROP PRIMARY KEY,
 ADD CONSTRAINT `pk_users`
@@ -96,7 +96,7 @@ PRIMARY KEY `users`(`id`),
 CHANGE COLUMN `username` `username` VARCHAR(30) UNIQUE;
 
 
--- ex.11
+-- ex.11 Movies Database
 CREATE DATABASE `movies`;
 USE `movies`;
 
@@ -156,7 +156,7 @@ VALUES
     ('Test Test4'),
     ('Test Test5');
 
--- ex.12
+-- ex.12 Car Rental Database
 CREATE DATABASE `car`;
 USE `car`;
 
@@ -254,7 +254,7 @@ VALUES
 	(1, 2, 3),
 	(1, 3, 2);
     
--- ex.13
+-- ex.13 Basic Insert
 CREATE DATABASE `soft_uni`;
 USE `soft_uni`;
 
@@ -315,12 +315,12 @@ VALUES
     ('Georgi', 'Terziev', 'Ivanov',	'CEO', 2,	'2007-12-09', 3000.00),
     ('Peter', 'Pan', 'Pan',	'Intern', 3,'2016-08-28', 599.88);
 
--- ex.14
+-- ex.14 Basic Select All Fields
 SELECT * FROM `towns`;
 SELECT * FROM `departments`;
 SELECT * FROM `employees`;
 
--- ex.15
+-- ex.15 Basic Select All Fields and Order Them
 SELECT * FROM `towns`
 ORDER BY `name`;
 SELECT * FROM `departments`
@@ -328,7 +328,7 @@ ORDER BY `name`;
 SELECT * FROM `employees`
 ORDER BY  `salary` DESC;
 
--- ex.16
+-- ex.16 Basic Select Some Fields
 SELECT `name` FROM `towns`
 ORDER BY `name`;
 SELECT `name` FROM `departments`
@@ -336,12 +336,12 @@ ORDER BY `name`;
 SELECT `first_name`, `last_name`, `job_title`, `salary` FROM `employees`
 ORDER BY  `salary` DESC;
 
--- ex.17
+-- ex.17 Increase Employees Salary
 UPDATE `employees`
 SET `salary` = `salary` * 1.10;
 SELECT `salary` FROM `employees`;
 
--- ex.18
+-- ex.18 Delete All Records
 DELETE FROM `occupancies`
 
 

@@ -1,7 +1,7 @@
 CREATE DATABASE `relations-ex`;
 USE `relations-ex`;
 
--- ex.01
+-- ex.01 One-To-One Relationship
 CREATE TABLE `people`(
 `person_id` INT AUTO_INCREMENT UNIQUE NOT NULL,
 `first_name` VARCHAR(35) NOT NULL,
@@ -33,7 +33,7 @@ ADD CONSTRAINT `fk_people_passports`
 	FOREIGN KEY (`passport_id`)
 	REFERENCES `passports`(`passport_id`);
 
--- ex.02
+-- ex.02 One-To-Many Relationship
 CREATE TABLE `manufacturers` (
 	`manufacturer_id` INT PRIMARY KEY AUTO_INCREMENT,
     `name` VARCHAR(20),
@@ -64,7 +64,7 @@ VALUES
 	('Model 3', 2),
     ('Nova', 3);
     
--- ex.03
+-- ex.03 Many-To-Many Relationship
 CREATE TABLE `students` (
 	`student_id` INT PRIMARY KEY AUTO_INCREMENT,
     `name` VARCHAR(30)
@@ -97,7 +97,7 @@ VALUES ('Spring MVC'), ('Neo4j'), ('Oracle 11g');
 INSERT INTO `students_exams` (`student_id`, `exam_id`)
 VALUES (1, 101), (1, 102), (2, 101), (3, 103), (2, 102), (2, 103);
 
--- ex.04
+-- ex.04 Self-Referencing
 CREATE TABLE `teachers`(
 `teacher_id` INT PRIMARY KEY AUTO_INCREMENT,
 `name` VARCHAR(20),
@@ -119,7 +119,7 @@ ADD CONSTRAINT `fk_teachers_teachers`
 	FOREIGN KEY (`manager_id`)
 	REFERENCES `teachers`(`teacher_id`);
 
--- ex.05
+-- ex.05 Online Store Database
 CREATE DATABASE `store`;
 USE `store`;
 
@@ -173,7 +173,7 @@ CONSTRAINT `fk_order_items_orders`
 	REFERENCES `orders`(`order_id`)
 );
 
--- ex.06
+-- ex.06 University Database
 CREATE DATABASE `university`;
 USE `university`;
 
@@ -220,7 +220,7 @@ CONSTRAINT `fk_agenda_subjects`
 	REFERENCES `subjects`(`subject_id`)
 );
 
--- ex.09
+-- ex.09 Peaks in Rila
 SELECT m.`mountain_range`, p.`peak_name`, p.`elevation`
 FROM `mountains` AS m
 JOIN `peaks` AS p 
